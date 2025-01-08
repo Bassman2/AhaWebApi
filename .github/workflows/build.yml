@@ -3,7 +3,7 @@ name: Continuous Integration
 permissions:
   contents: read
   pull-requests: write
-  
+
 on:
   push:
     branches: [main,]
@@ -19,11 +19,11 @@ jobs:
       Solution: main/${{ github.event.repository.name }}.sln
 
     steps:
-    - name: Checkout Main
+    - name: Checkout Main for ${{ github.event.repository.name }}
       uses: actions/checkout@v4
       with:
         path: main
-        
+
     - name: Checkout WebServiceClient
       uses: actions/checkout@v4
       with:
@@ -74,4 +74,4 @@ jobs:
         name: ${{ github.event.repository.name }}Doc.zip
         path: main/Doc/${{ github.event.repository.name }}Doc/Help/${{ github.event.repository.name }}.chm
       if: ${{ hashFiles( 'main/Doc/*/*.shfbproj' ) != '' }}
- 
+
