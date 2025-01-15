@@ -17,9 +17,9 @@
     <RootNamespace>AVMHomeAutomationDoc</RootNamespace>
     <Name>AVMHomeAutomationDoc</Name>
     <!-- SHFB properties -->
-    <FrameworkVersion>.NET Core/.NET Standard/.NET 5.0+</FrameworkVersion>
+    <FrameworkVersion>Cross-platform (.NET Core/.NET Standard)</FrameworkVersion>
     <OutputPath>Help\</OutputPath>
-    <HtmlHelpName>AVMHomeAutomation</HtmlHelpName>
+    <HtmlHelpName>AVMHomeAutomationWebApi</HtmlHelpName>
     <Language>en-US</Language>
     <TransformComponentArguments>
       <Argument Key="logoFile" Value="Help.png" xmlns="" />
