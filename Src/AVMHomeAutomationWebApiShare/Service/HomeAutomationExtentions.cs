@@ -117,13 +117,13 @@ internal static class HomeAutomationExtentions
 
     public static Target? ToTarget(this string value)
     {
-        switch (value.TrimEnd())
+        return value.TrimEnd() switch
         {
-        case "close": return Target.Close;
-        case "open": return Target.Open;
-        case "stop": return Target.Stop;
-        default: throw new ArgumentOutOfRangeException(nameof(value), value);
-        }
+            "close" => (Target?)Target.Close,
+            "open" => (Target?)Target.Open,
+            "stop" => (Target?)Target.Stop,
+            _ => throw new ArgumentOutOfRangeException(nameof(value), value),
+        };
     }
 
     public static XmlDocument? ToXml(this string? value)

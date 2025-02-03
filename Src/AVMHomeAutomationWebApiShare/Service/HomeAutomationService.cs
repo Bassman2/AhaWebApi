@@ -458,7 +458,7 @@ internal class HomeAutomationService(string login, string password, Uri? host = 
             throw new ArgumentOutOfRangeException(nameof(temperature));
         }
         string ainlist = ains.Select((v, i) => $"child_{i + 1}={v}").Aggregate("", (a, b) => $"{a}&{b}");
-        string req = $"webservices/homeautoswitch.lua?switchcmd=addcolorleveltemplate&sid={this.sessionId}&name=name&levelPercentage={levelPercentage}&temperature={temperature}&{ainlist}" + (colorpreset ? "&colorpreset=true" : "");
+        string req = $"webservices/homeautoswitch.lua?switchcmd=addcolorleveltemplate&sid={this.sessionId}&name={name}&levelPercentage={levelPercentage}&temperature={temperature}&{ainlist}" + (colorpreset ? "&colorpreset=true" : "");
         var res = await GetStringAsync(req, cancellationToken);
         return res?.ToInt();
     }
@@ -560,7 +560,8 @@ internal class HomeAutomationService(string login, string password, Uri? host = 
     /// <remarks>New in Fritz!OS 7.39</remarks>
     public async Task SetMetaDataAsync(string ain, MetaData metaData, CancellationToken cancellationToken)
     {
-        var res = await GetStringAsync(BuildUrl("setmetadata", ain, "metadata={metaData.AsToJson()}"), cancellationToken);
+        string md = ""; // metaData.AsToJson();
+        var res = await GetStringAsync(BuildUrl("setmetadata", ain, $"metadata={md}"), cancellationToken);
         //return res;
     }
 

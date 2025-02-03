@@ -21,14 +21,14 @@ internal class HomeAutomationAuthenticator(string login, string password) : IAut
         {
             string resp = $"{challenge}-{GetMD5Hash(challenge + "-" + password)}";
             string request = $"login_sid.lua?username={login}&response={resp}";
-            using (HttpResponseMessage response = client.GetAsync(request).Result)
-            {
-                response.EnsureSuccessStatusCode();
-                Stream stream = response.Content.ReadAsStreamAsync().Result;
-                XDocument doc = XDocument.Load(stream);
-                XElement? info = doc.FirstNode as XElement;
-                sessionId = info?.Element("SID")?.Value;
-            }
+            using HttpResponseMessage response = client.GetAsync(request).Result;
+            
+            response.EnsureSuccessStatusCode();
+            Stream stream = response.Content.ReadAsStreamAsync().Result;
+            XDocument doc = XDocument.Load(stream);
+            XElement? info = doc.FirstNode as XElement;
+            sessionId = info?.Element("SID")?.Value;
+            
         }
         if (service is HomeAutomationService homeAutomationService)
         {
@@ -36,7 +36,7 @@ internal class HomeAutomationAuthenticator(string login, string password) : IAut
         }
     }
 
-    private string GetMD5Hash(string input)
+    private static string GetMD5Hash(string input)
     {
         //MD5 md5Hasher = MD5.Create();
         //byte[] data = md5Hasher.ComputeHash(Encoding.Unicode.GetBytes(input));
