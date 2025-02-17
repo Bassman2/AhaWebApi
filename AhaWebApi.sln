@@ -268,8 +268,10 @@ Global
 		Report\AhaReportShare\AhaReportShare.projitems*{66236fbb-69cf-46b7-9270-9945ba953ebf}*SharedItemsImports = 13
 		Report\AhaReportShare\AhaReportShare.projitems*{81a777b2-6c9b-4a6d-baaa-3dcb64c0e5b1}*SharedItemsImports = 5
 		..\WebServiceClient\Src\WebServiceClientShare\WebServiceClientShare.projitems*{8caacb04-9656-4b7c-a692-422fca51474b}*SharedItemsImports = 13
+		Src\AhaWebApiShare\AhaWebApiShare.projitems*{9c03cf0f-3356-4b67-b14b-060dfbf78148}*SharedItemsImports = 5
 		..\WebServiceClient\Src\WebServiceClientShare\WebServiceClientShare.projitems*{9c03cf0f-3356-4b67-b14b-060dfbf78148}*SharedItemsImports = 5
 		Test\AhaWebApiUnitTestShare\AhaWebApiUnitTestShare.projitems*{bcb266e8-9a2e-4ca5-9141-4d38930c3ebf}*SharedItemsImports = 5
+		Src\AhaWebApiShare\AhaWebApiShare.projitems*{ea9d6278-1062-4fe3-8169-938d8d7d173a}*SharedItemsImports = 5
 		..\WebServiceClient\Src\WebServiceClientShare\WebServiceClientShare.projitems*{ea9d6278-1062-4fe3-8169-938d8d7d173a}*SharedItemsImports = 5
 	EndGlobalSection
 EndGlobal

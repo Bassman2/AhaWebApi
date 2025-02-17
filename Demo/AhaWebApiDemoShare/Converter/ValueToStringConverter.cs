@@ -1,7 +1,6 @@
-﻿using System.Diagnostics;
-using System.Windows.Data;
+﻿
 
-namespace AVMHomeAutomationDemo.Converter
+namespace AhaWebApiDemo.Converter
 {
     //[ValueConversion(typeof(IXmlNullable), typeof(string))]
     public class ValueToStringConverter : IValueConverter

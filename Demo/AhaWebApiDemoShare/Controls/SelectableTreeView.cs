@@ -8,7 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Xml.Linq;
 
-namespace AVMHomeAutomationDemo.Controls
+namespace AhaWebApiDemo.Controls
 {
     public class SelectableTreeView : TreeView
     {

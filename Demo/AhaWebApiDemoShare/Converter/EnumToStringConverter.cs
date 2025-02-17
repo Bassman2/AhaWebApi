@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Data;
 
-namespace AVMHomeAutomationDemo.Converter
+namespace AhaWebApiDemo.Converter
 {
 
     [ValueConversion(typeof(Enum), typeof(string))]

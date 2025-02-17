@@ -1,12 +1,12 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <LangVersion>latest</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <AssemblyName>AVMHomeAutomationWebApiUnitTest</AssemblyName>
-    <RootNamespace>AVMHomeAutomationWebApiUnitTest</RootNamespace>
+    <AssemblyName>AhaWebApiUnitTest</AssemblyName>
+    <RootNamespace>AhaWebApiUnitTest</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,14 +15,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Src\AVMHomeAutomationWebApi80\AVMHomeAutomationWebApi80.csproj" />
+    <ProjectReference Include="..\..\Src\AhaWebApi80\AhaWebApi80.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Using Include="Microsoft.VisualStudio.TestTools.UnitTesting" />
   </ItemGroup>
 
-
-  <Import Project="..\AVMHomeAutomationWebApiUnitTestShare\AVMHomeAutomationWebApiUnitTestShare.projitems" Label="Shared" />
+	<Import Project="..\AhaWebApiUnitTestShare\AhaWebApiUnitTestShare.projitems" Label="Shared" />
 
 </Project>

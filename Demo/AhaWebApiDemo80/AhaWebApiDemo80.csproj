@@ -6,20 +6,16 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
-    <AssemblyName>AVMHomeAutomationWebApiDemo</AssemblyName>
-    <RootNamespace>AVMHomeAutomationWebApiDemo</RootNamespace>
+    <AssemblyName>AhaWebApiDemo</AssemblyName>
+    <RootNamespace>AhaWebApiDemo</RootNamespace>
   </PropertyGroup>
 
  
-  <Import Project="..\AVMHomeAutomationWebApiDemoShare\AVMHomeAutomationWebApiDemoShare.projitems" Label="Shared" />
+  <Import Project="..\AhaWebApiDemoShare\AhaWebApiDemoShare.projitems" Label="Shared" />
 
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.135" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\Src\AVMHomeAutomationWebApi80\AVMHomeAutomationWebApi80.csproj" />
   </ItemGroup>
 
 </Project>

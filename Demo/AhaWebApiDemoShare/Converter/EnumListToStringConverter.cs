@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Data;
 
-namespace AVMHomeAutomationDemo.Converter
+namespace AhaWebApiDemo.Converter
 {
     [ValueConversion(typeof(List<Enum>), typeof(string))]
     public class EnumListToStringConverter : IValueConverter

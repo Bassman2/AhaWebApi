@@ -9,10 +9,10 @@
     <InvariantGlobalization>true</InvariantGlobalization>
   </PropertyGroup>
 
-  <Import Project="..\AVMHomeAutomationReportShare\AVMHomeAutomationReportShare.projitems" Label="Shared" />
+  <Import Project="..\AhaReportShare\AhaReportShare.projitems" Label="Shared" />
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Src\AVMHomeAutomationWebApi80\AVMHomeAutomationWebApi80.csproj" />
+    <ProjectReference Include="..\..\Src\AhaWebApi80\AhaWebApi80.csproj" />
   </ItemGroup>
 
 </Project>

@@ -2,7 +2,7 @@
 using System;
 using System.Windows.Data;
 
-namespace AVMHomeAutomationDemo.Converter
+namespace AhaWebApiDemo.Converter
 {
     [ValueConversion(typeof(int), typeof(string))]
     public class IntToFunctionBitMaskConverter : IValueConverter

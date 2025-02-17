@@ -21,10 +21,8 @@
     <IsAotCompatible>True</IsAotCompatible>
   </PropertyGroup>
 
-
-  <Import Project="..\AVMHomeAutomationWebApiShare\AVMHomeAutomationWebApiShare.projitems" Label="Shared" />
-
-
   <Import Project="..\..\..\WebServiceClient\Src\WebServiceClientShare\WebServiceClientShare.projitems" Label="Shared" />
+
+  <Import Project="..\AhaWebApiShare\AhaWebApiShare.projitems" Label="Shared" />
 
 </Project>

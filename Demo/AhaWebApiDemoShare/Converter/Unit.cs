@@ -1,4 +1,4 @@
-﻿namespace AVMHomeAutomationDemo.Converter
+﻿namespace AhaWebApiDemo.Converter
 {
     public enum Unit
     {
