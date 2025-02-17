@@ -13,33 +13,33 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{6BBFABC6-1
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Report", "Report", "{F6B4B28F-9527-4AD6-831E-F05352B0782C}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "AVMHomeAutomationReportShare", "Report\AVMHomeAutomationReportShare\AVMHomeAutomationReportShare.shproj", "{66236FBB-69CF-46B7-9270-9945BA953EBF}"
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "AhaReportShare", "Report\AhaReportShare\AhaReportShare.shproj", "{66236FBB-69CF-46B7-9270-9945BA953EBF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AVMHomeAutomationReport90", "Report\AVMHomeAutomationReport90\AVMHomeAutomationReport90.csproj", "{34A164D6-221C-4B3F-A99F-BDD40649D1B6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AhaReport90", "Report\AhaReport90\AhaReport90.csproj", "{34A164D6-221C-4B3F-A99F-BDD40649D1B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AVMHomeAutomationReport80", "Report\AVMHomeAutomationReport80\AVMHomeAutomationReport80.csproj", "{81A777B2-6C9B-4A6D-BAAA-3DCB64C0E5B1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AhaReport80", "Report\AhaReport80\AhaReport80.csproj", "{81A777B2-6C9B-4A6D-BAAA-3DCB64C0E5B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AVMHomeAutomationWebApi80", "Src\AVMHomeAutomationWebApi80\AVMHomeAutomationWebApi80.csproj", "{EA9D6278-1062-4FE3-8169-938D8D7D173A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AhaWebApi80", "Src\AhaWebApi80\AhaWebApi80.csproj", "{EA9D6278-1062-4FE3-8169-938D8D7D173A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AVMHomeAutomationWebApi90", "Src\AVMHomeAutomationWebApi90\AVMHomeAutomationWebApi90.csproj", "{9C03CF0F-3356-4B67-B14B-060DFBF78148}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AhaWebApi90", "Src\AhaWebApi90\AhaWebApi90.csproj", "{9C03CF0F-3356-4B67-B14B-060DFBF78148}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "AVMHomeAutomationWebApiShare", "Src\AVMHomeAutomationWebApiShare\AVMHomeAutomationWebApiShare.shproj", "{24D7D656-F7DB-4224-9A85-AFE38FF6E4DE}"
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "AhaWebApiShare", "Src\AhaWebApiShare\AhaWebApiShare.shproj", "{24D7D656-F7DB-4224-9A85-AFE38FF6E4DE}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "AVMHomeAutomationWebApiUnitTestShare", "Test\AVMHomeAutomationWebApiUnitTestShare\AVMHomeAutomationWebApiUnitTestShare.shproj", "{0DA5BB85-1A8B-4433-8227-42BE591CFFF0}"
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "AhaWebApiUnitTestShare", "Test\AhaWebApiUnitTestShare\AhaWebApiUnitTestShare.shproj", "{0DA5BB85-1A8B-4433-8227-42BE591CFFF0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AVMHomeAutomationWebApiUnitTest80", "Test\AVMHomeAutomationWebApiUnitTest80\AVMHomeAutomationWebApiUnitTest80.csproj", "{1A72AF55-3802-431F-81D1-6BFC2307A4BC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AhaWebApiUnitTest80", "Test\AhaWebApiUnitTest80\AhaWebApiUnitTest80.csproj", "{1A72AF55-3802-431F-81D1-6BFC2307A4BC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AVMHomeAutomationWebApiUnitTest90", "Test\AVMHomeAutomationWebApiUnitTest90\AVMHomeAutomationWebApiUnitTest90.csproj", "{BCB266E8-9A2E-4CA5-9141-4D38930C3EBF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AhaWebApiUnitTest90", "Test\AhaWebApiUnitTest90\AhaWebApiUnitTest90.csproj", "{BCB266E8-9A2E-4CA5-9141-4D38930C3EBF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AVMHomeAutomationWebApiDemo80", "Demo\AVMHomeAutomationWebApiDemo80\AVMHomeAutomationWebApiDemo80.csproj", "{23687D50-1E01-4B46-8623-445EEDA6011A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AhaWebApiDemo80", "Demo\AhaWebApiDemo80\AhaWebApiDemo80.csproj", "{23687D50-1E01-4B46-8623-445EEDA6011A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AVMHomeAutomationWebApiDemo90", "Demo\AVMHomeAutomationWebApiDemo90\AVMHomeAutomationWebApiDemo90.csproj", "{404FDE09-2962-4A45-91B5-3F496F79C1ED}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AhaWebApiDemo90", "Demo\AhaWebApiDemo90\AhaWebApiDemo90.csproj", "{404FDE09-2962-4A45-91B5-3F496F79C1ED}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "AVMHomeAutomationWebApiDemoShare", "Demo\AVMHomeAutomationWebApiDemoShare\AVMHomeAutomationWebApiDemoShare.shproj", "{47E96DC3-F859-4508-8978-E2EA4E78AF92}"
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "AhaWebApiDemoShare", "Demo\AhaWebApiDemoShare\AhaWebApiDemoShare.shproj", "{47E96DC3-F859-4508-8978-E2EA4E78AF92}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "WebServiceClientShare", "..\WebServiceClient\Src\WebServiceClientShare\WebServiceClientShare.shproj", "{8CAACB04-9656-4B7C-A692-422FCA51474B}"
 EndProject
-Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "AVMHomeAutomationWebApiDoc", "Doc\AVMHomeAutomationWebApiDoc\AVMHomeAutomationWebApiDoc.shfbproj", "{7A0F58B4-D1BD-4F0D-B62A-63BE67F9F5DC}"
+Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "AhaWebApiDoc", "Doc\AhaWebApiDoc\AhaWebApiDoc.shfbproj", "{7A0F58B4-D1BD-4F0D-B62A-63BE67F9F5DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -258,20 +258,18 @@ Global
 		SolutionGuid = {EA554914-5C65-43F3-ADFB-C436CCD65309}
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		Test\AVMHomeAutomationWebApiUnitTestShare\AVMHomeAutomationWebApiUnitTestShare.projitems*{0da5bb85-1a8b-4433-8227-42be591cfff0}*SharedItemsImports = 13
-		Test\AVMHomeAutomationWebApiUnitTestShare\AVMHomeAutomationWebApiUnitTestShare.projitems*{1a72af55-3802-431f-81d1-6bfc2307a4bc}*SharedItemsImports = 5
-		Demo\AVMHomeAutomationWebApiDemoShare\AVMHomeAutomationWebApiDemoShare.projitems*{23687d50-1e01-4b46-8623-445eeda6011a}*SharedItemsImports = 5
-		Src\AVMHomeAutomationWebApiShare\AVMHomeAutomationWebApiShare.projitems*{24d7d656-f7db-4224-9a85-afe38ff6e4de}*SharedItemsImports = 13
-		Report\AVMHomeAutomationReportShare\AVMHomeAutomationReportShare.projitems*{34a164d6-221c-4b3f-a99f-bdd40649d1b6}*SharedItemsImports = 5
-		Demo\AVMHomeAutomationWebApiDemoShare\AVMHomeAutomationWebApiDemoShare.projitems*{404fde09-2962-4a45-91b5-3f496f79c1ed}*SharedItemsImports = 5
-		Demo\AVMHomeAutomationWebApiDemoShare\AVMHomeAutomationWebApiDemoShare.projitems*{47e96dc3-f859-4508-8978-e2ea4e78af92}*SharedItemsImports = 13
-		Report\AVMHomeAutomationReportShare\AVMHomeAutomationReportShare.projitems*{66236fbb-69cf-46b7-9270-9945ba953ebf}*SharedItemsImports = 13
-		Report\AVMHomeAutomationReportShare\AVMHomeAutomationReportShare.projitems*{81a777b2-6c9b-4a6d-baaa-3dcb64c0e5b1}*SharedItemsImports = 5
+		Test\AhaWebApiUnitTestShare\AhaWebApiUnitTestShare.projitems*{0da5bb85-1a8b-4433-8227-42be591cfff0}*SharedItemsImports = 13
+		Test\AhaWebApiUnitTestShare\AhaWebApiUnitTestShare.projitems*{1a72af55-3802-431f-81d1-6bfc2307a4bc}*SharedItemsImports = 5
+		Demo\AhaWebApiDemoShare\AhaWebApiDemoShare.projitems*{23687d50-1e01-4b46-8623-445eeda6011a}*SharedItemsImports = 5
+		Src\AhaWebApiShare\AhaWebApiShare.projitems*{24d7d656-f7db-4224-9a85-afe38ff6e4de}*SharedItemsImports = 13
+		Report\AhaReportShare\AhaReportShare.projitems*{34a164d6-221c-4b3f-a99f-bdd40649d1b6}*SharedItemsImports = 5
+		Demo\AhaWebApiDemoShare\AhaWebApiDemoShare.projitems*{404fde09-2962-4a45-91b5-3f496f79c1ed}*SharedItemsImports = 5
+		Demo\AhaWebApiDemoShare\AhaWebApiDemoShare.projitems*{47e96dc3-f859-4508-8978-e2ea4e78af92}*SharedItemsImports = 13
+		Report\AhaReportShare\AhaReportShare.projitems*{66236fbb-69cf-46b7-9270-9945ba953ebf}*SharedItemsImports = 13
+		Report\AhaReportShare\AhaReportShare.projitems*{81a777b2-6c9b-4a6d-baaa-3dcb64c0e5b1}*SharedItemsImports = 5
 		..\WebServiceClient\Src\WebServiceClientShare\WebServiceClientShare.projitems*{8caacb04-9656-4b7c-a692-422fca51474b}*SharedItemsImports = 13
-		Src\AVMHomeAutomationWebApiShare\AVMHomeAutomationWebApiShare.projitems*{9c03cf0f-3356-4b67-b14b-060dfbf78148}*SharedItemsImports = 5
 		..\WebServiceClient\Src\WebServiceClientShare\WebServiceClientShare.projitems*{9c03cf0f-3356-4b67-b14b-060dfbf78148}*SharedItemsImports = 5
-		Test\AVMHomeAutomationWebApiUnitTestShare\AVMHomeAutomationWebApiUnitTestShare.projitems*{bcb266e8-9a2e-4ca5-9141-4d38930c3ebf}*SharedItemsImports = 5
-		Src\AVMHomeAutomationWebApiShare\AVMHomeAutomationWebApiShare.projitems*{ea9d6278-1062-4fe3-8169-938d8d7d173a}*SharedItemsImports = 5
+		Test\AhaWebApiUnitTestShare\AhaWebApiUnitTestShare.projitems*{bcb266e8-9a2e-4ca5-9141-4d38930c3ebf}*SharedItemsImports = 5
 		..\WebServiceClient\Src\WebServiceClientShare\WebServiceClientShare.projitems*{ea9d6278-1062-4fe3-8169-938d8d7d173a}*SharedItemsImports = 5
 	EndGlobalSection
 EndGlobal
