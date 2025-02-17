@@ -6,7 +6,7 @@
     <SharedGUID>47e96dc3-f859-4508-8978-e2ea4e78af92</SharedGUID>
   </PropertyGroup>
   <PropertyGroup Label="Configuration">
-    <Import_RootNamespace>AVMHomeAutomationDemo</Import_RootNamespace>
+    <Import_RootNamespace>AhaDemo</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">

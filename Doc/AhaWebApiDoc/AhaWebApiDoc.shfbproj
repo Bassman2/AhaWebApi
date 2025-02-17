@@ -13,9 +13,9 @@
     <ProjectGuid>7a0f58b4-d1bd-4f0d-b62a-63be67f9f5dc</ProjectGuid>
     <SHFBSchemaVersion>2017.9.26.0</SHFBSchemaVersion>
     <!-- AssemblyName, Name, and RootNamespace are not used by SHFB but Visual Studio adds them anyway -->
-    <AssemblyName>AVMHomeAutomationDoc</AssemblyName>
-    <RootNamespace>AVMHomeAutomationDoc</RootNamespace>
-    <Name>AVMHomeAutomationDoc</Name>
+    <AssemblyName>AhaDoc</AssemblyName>
+    <RootNamespace>AhaDoc</RootNamespace>
+    <Name>AhaDoc</Name>
     <!-- SHFB properties -->
     <FrameworkVersion>Cross-platform (.NET Core/.NET Standard)</FrameworkVersion>
     <OutputPath>Help\</OutputPath>
@@ -49,7 +49,7 @@
     <Preliminary>False</Preliminary>
     <SdkLinkTarget>Blank</SdkLinkTarget>
     <DocumentationSources>
-      <DocumentationSource sourceFile="..\..\Src\AVMHomeAutomationWebApi90\AVMHomeAutomationWebApi90.csproj" />
+      <DocumentationSource sourceFile="..\..\Src\AhaWebApi90\AhaWebApi90.csproj" />
     </DocumentationSources>
     <HtmlHelp1xCompilerPath>
     </HtmlHelp1xCompilerPath>

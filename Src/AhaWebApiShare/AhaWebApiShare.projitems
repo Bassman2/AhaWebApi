@@ -6,7 +6,7 @@
     <SharedGUID>78527ef9-74e9-44c2-98cc-a2f939ae8b7d</SharedGUID>
   </PropertyGroup>
   <PropertyGroup Label="Configuration">
-    <Import_RootNamespace>AVMHomeAutomationWebApi</Import_RootNamespace>
+    <Import_RootNamespace>AhaWebApi</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Alert.cs" />

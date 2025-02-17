@@ -6,7 +6,7 @@
     <SharedGUID>66236fbb-69cf-46b7-9270-9945ba953ebf</SharedGUID>
   </PropertyGroup>
   <PropertyGroup Label="Configuration">
-    <Import_RootNamespace>AVMHomeAutomationReport</Import_RootNamespace>
+    <Import_RootNamespace>AhaReport</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Program.cs" />
