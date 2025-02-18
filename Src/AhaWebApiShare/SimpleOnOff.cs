@@ -1,4 +1,4 @@
-﻿namespace AVMHomeAutomation;
+﻿namespace AhaWebApi;
 
 /// <summary>
 /// Device/socket/lamp/actuator that can be switched on/off.

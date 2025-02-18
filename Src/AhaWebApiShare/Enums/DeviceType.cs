@@ -1,4 +1,4 @@
-﻿namespace AVMHomeAutomation;
+﻿namespace AhaWebApi;
 
 public enum DeviceType
 {

@@ -1,5 +1,5 @@
 ﻿
-namespace AVMHomeAutomationDemo.View
+namespace AhaWebApiDemo.View
 {
     /// <summary>
     /// Interaction logic for MainView.xaml

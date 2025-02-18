@@ -1,4 +1,4 @@
-﻿namespace AVMHomeAutomation.Service;
+﻿namespace AhaWebApi.Service;
 
 internal class HomeAutomationService(string login, string password, Uri? host = null) 
     : WebService(host ?? new Uri("http://fritz.box"), new HomeAutomationAuthenticator(login, password))

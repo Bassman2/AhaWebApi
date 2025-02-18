@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AVMHomeAutomationDemo.View
+namespace AhaWebApiDemo.View
 {
     /// <summary>
     /// Interaction logic for ColorControlView.xaml

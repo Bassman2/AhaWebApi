@@ -1,4 +1,4 @@
-﻿namespace AVMHomeAutomation.Service.Model;
+﻿namespace AhaWebApi.Service.Model;
 
 [JsonSourceGenerationOptions]
 [JsonSerializable(typeof(Color))]

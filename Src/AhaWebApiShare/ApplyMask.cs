@@ -1,4 +1,4 @@
-﻿namespace AVMHomeAutomation;
+﻿namespace AhaWebApi;
 
 /// <summary>
 /// Subnodes depending on which configuration is set.

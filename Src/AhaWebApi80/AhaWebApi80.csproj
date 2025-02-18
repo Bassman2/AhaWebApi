@@ -7,8 +7,8 @@
     <GenerateDocumentationFile>False</GenerateDocumentationFile>
     <SignAssembly>True</SignAssembly>
     <AssemblyOriginatorKeyFile>Bassman.snk</AssemblyOriginatorKeyFile>
-    <AssemblyName>AVMHomeAutomation</AssemblyName>
-    <RootNamespace>AVMHomeAutomation</RootNamespace>
+    <AssemblyName>AhaWebApi</AssemblyName>
+    <RootNamespace>AhaWebApi</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

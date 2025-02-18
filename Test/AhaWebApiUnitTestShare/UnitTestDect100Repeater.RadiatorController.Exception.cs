@@ -1,4 +1,4 @@
-﻿namespace AVMHomeAutomationTest
+﻿namespace AhaWebApiUnitTest
 {
     public partial class UnitTestDect100Repeater : UnitTestBase
     {

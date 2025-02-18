@@ -7,6 +7,8 @@
     <Nullable>enable</Nullable>
     <PublishAot>true</PublishAot>
     <InvariantGlobalization>true</InvariantGlobalization>
+    <AssemblyName>AhaReport</AssemblyName>
+    <RootNamespace>AhaReport</RootNamespace>
   </PropertyGroup>
 
   <Import Project="..\AhaReportShare\AhaReportShare.projitems" Label="Shared" />

@@ -1,7 +1,7 @@
 
 using System.Net;
 
-namespace AVMHomeAutomationTest
+namespace AhaWebApiUnitTest
 {
     public partial class UnitTestDect200Socket : UnitTestBase
     {

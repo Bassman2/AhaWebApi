@@ -1,4 +1,4 @@
-﻿namespace AVMHomeAutomationDemo.ViewModel;
+﻿namespace AhaWebApiDemo.ViewModel;
 
 public partial class ItemViewModel : ObservableObject
 {

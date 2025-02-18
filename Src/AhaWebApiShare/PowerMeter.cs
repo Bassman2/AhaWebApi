@@ -1,4 +1,4 @@
-﻿namespace AVMHomeAutomation;
+﻿namespace AhaWebApi;
 
 /// <summary>
 /// Energy meter

@@ -8,7 +8,7 @@
     <UseWPF>true</UseWPF>
     <AssemblyName>AhaWebApiDemo</AssemblyName>
     <RootNamespace>AhaWebApiDemo</RootNamespace>
-    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <GenerateDocumentationFile>False</GenerateDocumentationFile>
   </PropertyGroup>
 
  
@@ -17,6 +17,10 @@
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.135" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Src\AhaWebApi90\AhaWebApi90.csproj" />
   </ItemGroup>
 
 </Project>

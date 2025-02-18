@@ -1,4 +1,4 @@
-﻿namespace AVMHomeAutomation;
+﻿namespace AhaWebApi;
 
 /// <summary>
 /// HAN-FUN / ETSI unit data

@@ -6,7 +6,7 @@
     <SharedGUID>0da5bb85-1a8b-4433-8227-42be591cfff0</SharedGUID>
   </PropertyGroup>
   <PropertyGroup Label="Configuration">
-    <Import_RootNamespace>AVMHomeAutomationWebApiUnitTest</Import_RootNamespace>
+    <Import_RootNamespace>AhaWebApiUnitTest</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)ExpectedHttpRequestExceptionAttribute.cs" />

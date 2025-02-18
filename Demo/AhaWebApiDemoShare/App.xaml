@@ -1,8 +1,8 @@
-﻿<Application x:Class="AVMHomeAutomationDemo70.App"
+﻿<Application x:Class="AhaWebApiDemo70.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:AVMHomeAutomationDemo70"
-             xmlns:conv="clr-namespace:AVMHomeAutomationDemo.Converter"
+             xmlns:local="clr-namespace:AhaWebApiDemo70"
+             xmlns:conv="clr-namespace:AhaWebApiDemo.Converter"
              Startup="OnApplicationStartup">
     <Application.Resources>
         <conv:ValueToStringConverter x:Key="ValueToStringConverter"/>

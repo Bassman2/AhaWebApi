@@ -1,4 +1,4 @@
-﻿namespace AVMHomeAutomation.Service;
+﻿namespace AhaWebApi.Service;
 
 internal class HomeAutomationAuthenticator(string login, string password) : IAuthenticator
 {

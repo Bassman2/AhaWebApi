@@ -9,7 +9,7 @@ global using WebServiceClient;
 global using WebServiceClient.XSerializer;
 
 
-global using AVMHomeAutomation.Service;
-global using AVMHomeAutomation.Service.Model;
+global using AhaWebApi.Service;
+global using AhaWebApi.Service.Model;
 
 

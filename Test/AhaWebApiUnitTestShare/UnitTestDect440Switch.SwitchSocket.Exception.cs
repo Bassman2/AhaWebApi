@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace AVMHomeAutomationTest
+namespace AhaWebApiUnitTest
 {
     public partial class UnitTestDect440Switch : UnitTestBase
     {

@@ -1,5 +1,5 @@
-﻿using AVMHomeAutomationDemo.View;
-using AVMHomeAutomationDemo.ViewModel;
+﻿using AhaWebApiDemo.View;
+using AhaWebApiDemo.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -9,7 +9,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace AVMHomeAutomationDemo70
+namespace AhaWebApiDemo70
 {
     /// <summary>
     /// Interaction logic for App.xaml

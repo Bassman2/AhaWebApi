@@ -1,4 +1,4 @@
-﻿namespace AVMHomeAutomationTest;
+﻿namespace AhaWebApiUnitTest;
 
 public static class TestSettings
 {

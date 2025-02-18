@@ -1,8 +1,4 @@
-﻿using AVMHomeAutomation;
-using System;
-using System.Windows.Data;
-
-namespace AhaWebApiDemo.Converter
+﻿namespace AhaWebApiDemo.Converter
 {
     [ValueConversion(typeof(int), typeof(string))]
     public class IntToFunctionBitMaskConverter : IValueConverter

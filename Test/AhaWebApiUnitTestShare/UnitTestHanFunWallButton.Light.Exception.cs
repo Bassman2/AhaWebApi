@@ -2,7 +2,7 @@
 using System.Net.Sockets;
 using System.Reflection.Emit;
 
-namespace AVMHomeAutomationTest
+namespace AhaWebApiUnitTest
 {
     public partial class UnitTestHanFunWallButton : UnitTestBase
     {

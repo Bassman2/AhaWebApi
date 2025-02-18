@@ -1,4 +1,4 @@
-﻿namespace AVMHomeAutomationDemo.ViewModel;
+﻿namespace AhaWebApiDemo.ViewModel;
 
 public class TemperatureViewModel : ObservableObject
 {

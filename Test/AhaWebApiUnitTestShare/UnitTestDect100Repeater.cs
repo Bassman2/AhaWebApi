@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace AVMHomeAutomationTest
+namespace AhaWebApiUnitTest
 {
     [TestClass]
     public partial class UnitTestDect100Repeater : UnitTestBase

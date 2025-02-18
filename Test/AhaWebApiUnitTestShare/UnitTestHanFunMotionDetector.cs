@@ -1,4 +1,4 @@
-﻿namespace AVMHomeAutomationTest
+﻿namespace AhaWebApiUnitTest
 {
     [TestClass]
     public partial class UnitTestHanFunMotionDetector : UnitTestBase
