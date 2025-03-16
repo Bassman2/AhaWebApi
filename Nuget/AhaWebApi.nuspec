@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>AhaWebApi</id>
-    <version>1.0.0-beta.3</version>
+    <version>0.0.1</version>
     <title>AVM Home Automation Web Api</title>
     <authors>Ralf Beckers</authors>
     <owners>Ralf Beckers</owners>
