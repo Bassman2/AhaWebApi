@@ -9,6 +9,7 @@
     <AssemblyOriginatorKeyFile>Bassman.snk</AssemblyOriginatorKeyFile>
     <AssemblyName>AhaWebApi</AssemblyName>
     <RootNamespace>AhaWebApi</RootNamespace>
+    <Version>0.0.1.0</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

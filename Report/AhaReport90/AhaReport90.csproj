@@ -9,6 +9,7 @@
     <InvariantGlobalization>true</InvariantGlobalization>
     <AssemblyName>AhaReport</AssemblyName>
     <RootNamespace>AhaReport</RootNamespace>
+    <Version>0.0.1.0</Version>
   </PropertyGroup>
 
   <Import Project="..\AhaReportShare\AhaReportShare.projitems" Label="Shared" />

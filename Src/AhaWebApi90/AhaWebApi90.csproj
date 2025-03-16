@@ -10,6 +10,7 @@
     <AssemblyName>AhaWebApi</AssemblyName>
     <RootNamespace>AhaWebApi</RootNamespace>
     <DelaySign>False</DelaySign>
+    <Version>0.0.1.0</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

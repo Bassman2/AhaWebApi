@@ -9,6 +9,7 @@
     <AssemblyName>AhaWebApiDemo</AssemblyName>
     <RootNamespace>AhaWebApiDemo</RootNamespace>
     <GenerateDocumentationFile>False</GenerateDocumentationFile>
+    <Version>0.0.1.0</Version>
   </PropertyGroup>
 
  

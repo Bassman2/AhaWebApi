@@ -8,6 +8,7 @@
     <UseWPF>true</UseWPF>
     <AssemblyName>AhaWebApiDemo</AssemblyName>
     <RootNamespace>AhaWebApiDemo</RootNamespace>
+    <Version>0.0.1.0</Version>
   </PropertyGroup>
 
  
