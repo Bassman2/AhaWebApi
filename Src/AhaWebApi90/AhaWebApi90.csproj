@@ -4,7 +4,7 @@
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <GenerateDocumentationFile>False</GenerateDocumentationFile>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <SignAssembly>False</SignAssembly>
     <AssemblyOriginatorKeyFile>Bassman.snk</AssemblyOriginatorKeyFile>
     <AssemblyName>AhaWebApi</AssemblyName>

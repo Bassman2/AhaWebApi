@@ -6,25 +6,29 @@
 public class Switch : IXSerializable
 {
     /// <summary>
-    /// Switching state off / on 
+    /// Gets or sets the switching state (off/on).
     /// </summary>
     public bool? State { get; set; }
 
     /// <summary>
-    /// Automatic time switching (false) or manual switching (true)
+    /// Gets or sets a value indicating whether the switch is in manual mode (true) or automatic time switching mode (false).
     /// </summary>
     public bool? Mode { get; set; }
 
     /// <summary>
-    /// Switch lock via UI / API on no / yes 
+    /// Gets or sets a value indicating whether the switch is locked via UI or API (no/yes).
     /// </summary>
     public bool? Lock { get; set; }
 
     /// <summary>
-    /// Switching lock directly on the device on no / yes 
+    /// Gets or sets a value indicating whether the switching lock is enabled directly on the device (no/yes).
     /// </summary>
     public bool? DeviceLock { get; set; }
 
+    /// <summary>
+    /// Reads the switch data from the specified XML element.
+    /// </summary>
+    /// <param name="elm">The XML element to read from.</param>
     public void ReadX(XElement elm)
     {
         State = elm.ReadElementBool("state");

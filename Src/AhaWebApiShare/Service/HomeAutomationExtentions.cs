@@ -317,12 +317,12 @@ internal static class HomeAutomationExtentions
         return null;
     }
 
-    /// <summary>
-    /// Fix bug in Fritz!OS
-    /// </summary>
-    /// <param name="value">Result string.</param>
-    /// <returns>Result string</returns>
-    /// <exception cref="HttpRequestException">Throw exception is result string starts with HTTP error.</exception>
+    ///// <summary>
+    ///// Fix bug in Fritz!OS
+    ///// </summary>
+    ///// <param name="value">Result string.</param>
+    ///// <returns>Result string</returns>
+    ///// <exception cref="HttpRequestException">Throw exception is result string starts with HTTP error.</exception>
 
 //    public static string CheckStatusCode(this string value)
 //    {

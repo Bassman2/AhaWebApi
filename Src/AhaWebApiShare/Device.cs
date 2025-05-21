@@ -36,11 +36,10 @@ public class Device : IXSerializable
     /// </summary>
     public Functions FunctionBitMask { get; set; }        
        
-    
     /// <summary>
     /// 0/1 - Device connected no / yes. For internal use only. Use IsPresent instead.
     /// </summary>
-     public bool? IsPresent { get; set; }
+    public bool? IsPresent { get; set; }
 
     /// <summary>
     /// A command (such as a switching command or change brightness) is running.
@@ -112,12 +111,20 @@ public class Device : IXSerializable
     /// </summary>
     public Hkr? Hkr { get; set; }
 
-    
+    /// <summary>
+    /// Child devices of this device, if any.
+    /// </summary>
     public List<Device>? Children { get; internal set; }
 
-    
+    /// <summary>
+    /// The type of the device.
+    /// </summary>
     public DeviceType DeviceType { get; internal set; }
 
+    /// <summary>
+    /// Reads the device data from the specified XML element.
+    /// </summary>
+    /// <param name="elm">The XML element to read from.</param>
     public virtual void ReadX(XElement elm)
     {
         Identifier = elm.ReadAttributeString("identifier");
@@ -146,6 +153,10 @@ public class Device : IXSerializable
         DeviceType = SetDeviceType();
     }
 
+    /// <summary>
+    /// Determines the device type based on the product name or ETSI unit information.
+    /// </summary>
+    /// <returns>The determined <see cref="DeviceType"/>.</returns>
     private DeviceType SetDeviceType()
     {
         return ProductName switch

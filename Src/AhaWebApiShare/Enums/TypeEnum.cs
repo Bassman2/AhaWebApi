@@ -1,5 +1,8 @@
 ﻿namespace AhaWebApi;
 
+/// <summary>
+/// Specifies the type of event or action, such as coming, leaving, or generic.
+/// </summary>
 [DataContract]
 public enum TypeEnum
 {

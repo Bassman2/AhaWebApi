@@ -6,15 +6,19 @@
 public class Temperature : IXSerializable
 {
     /// <summary>
-    /// Temperatur value in ° Celsius
+    /// Gets or sets the temperature value in degrees Celsius.
     /// </summary>
     public double? Celsius { get; set; }
 
     /// <summary>
-    /// Temperatur offset value in ° Celsius
+    /// Gets or sets the temperature offset value in degrees Celsius.
     /// </summary>
     public double? Offset { get; set; }
 
+    /// <summary>
+    /// Reads the temperature and offset values from the specified XML element.
+    /// </summary>
+    /// <param name="elm">The XML element to read from.</param>
     public void ReadX(XElement elm)
     {
         Celsius = elm.ReadElementInt("celsius");

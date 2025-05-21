@@ -1,37 +1,59 @@
 ﻿namespace AhaWebApi;
 
 /// <summary>
-/// List of all devices.
+/// Represents a list of all devices and groups, including version information and hierarchical structure.
 /// </summary>
 public class DeviceList : IXSerializable
 {
     /// <summary>
-    /// Version of the device list.
+    /// Gets or sets the version of the device list.
     /// </summary>
     public string? Version { get; set; }
 
     /// <summary>
-    /// Firmware version
+    /// Gets or sets the firmware version.
     /// </summary>
     public string? FirmwareVersion { get; set; }
 
     /// <summary>
-    /// Devices and groups
+    /// Gets the flat list of all devices and groups as they appear in the source XML.
     /// </summary>
     public List<Device> RowDevices { get; } = [];
 
+    /// <summary>
+    /// Gets the flat list of all devices and groups.
+    /// </summary>
     public List<Device>? ItemsList { get; private set; }
 
+    /// <summary>
+    /// Gets the hierarchical tree of all devices and groups.
+    /// </summary>
     public List<Device>? ItemsTree { get; private set; }
 
+    /// <summary>
+    /// Gets the flat list of all devices (excluding groups).
+    /// </summary>
     public List<Device>? DevicesList { get; private set; }
 
+    /// <summary>
+    /// Gets the hierarchical tree of all devices (excluding groups).
+    /// </summary>
     public List<Device>? DevicesTree { get; private set; }
 
+    /// <summary>
+    /// Gets the flat list of all groups.
+    /// </summary>
     public List<Group>? GroupsList { get; private set; }
 
+    /// <summary>
+    /// Gets the hierarchical tree of all groups.
+    /// </summary>
     public List<Group>? GroupsTree { get; private set; }
 
+    /// <summary>
+    /// Reads the device list and its properties from the specified XML element.
+    /// </summary>
+    /// <param name="elm">The XML element to read from.</param>
     public void ReadX(XElement elm)
     {
         Version = elm.ReadAttributeString("version");
@@ -54,6 +76,9 @@ public class DeviceList : IXSerializable
         Fill();
     }
 
+    /// <summary>
+    /// Populates the various device and group lists and trees based on the flat <see cref="RowDevices"/> collection.
+    /// </summary>
     private void Fill()
     {
         this.ItemsList = [];

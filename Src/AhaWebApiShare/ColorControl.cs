@@ -1,45 +1,49 @@
 ﻿namespace AhaWebApi;
 
 /// <summary>
-/// Lamp with adjustable colour/colour temperature.
+/// Represents a lamp with adjustable color and color temperature.
 /// </summary>
 public class ColorControl : IXSerializable
 {
     /// <summary>
-    /// Supported color modes
+    /// Gets or sets the supported color modes for the lamp.
     /// </summary>
     public string? SupportedModes { get; set; }
 
     /// <summary>
-    /// Current color mode
+    /// Gets or sets the current color mode of the lamp.
     /// </summary>
     public string? CurrentMode { get; set; }
 
     /// <summary>
-    /// Hue value of the color. (0° bis 359°)
+    /// Gets or sets the hue value of the color (0° to 359°).
     /// </summary>
     public int? Hue { get; set; }
 
     /// <summary>
-    /// Saturation value of the color. (0 bis 255)
+    /// Gets or sets the saturation value of the color (0 to 255).
     /// </summary>
     public int? Saturation { get; set; }
 
     /// <summary>
-    /// Unmapped hue value.
+    /// Gets or sets the unmapped hue value.
     /// </summary>
     public int? UnmappedHue { get; set; }
 
     /// <summary>
-    ///  Unmapped Saturation value
+    /// Gets or sets the unmapped saturation value.
     /// </summary>
     public int? UnmappedSaturation { get; set; }
 
     /// <summary>
-    /// Color temperature in ° Kelvin. (2700° bis 6500° Kelvin)
+    /// Gets or sets the color temperature in degrees Kelvin (2700° to 6500° Kelvin).
     /// </summary>
     public int? Temperature { get; set; }
 
+    /// <summary>
+    /// Reads the color control data from the specified XML element.
+    /// </summary>
+    /// <param name="elm">The XML element to read from.</param>
     public void ReadX(XElement elm)
     {
         SupportedModes = elm.ReadAttributeString("supported_modes");
