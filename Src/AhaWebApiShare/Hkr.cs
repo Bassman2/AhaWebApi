@@ -1,97 +1,101 @@
 ﻿namespace AhaWebApi;
 
 /// <summary>
-/// Radiator regulator
+/// Represents a radiator regulator (HKR) device, providing properties for temperature control, device state, error codes, and scheduling.
 /// </summary>
 public class Hkr : IXSerializable
 {
     /// <summary>
-    /// Actual temperature in ° C. (8 to 28 ° C or ON / OFF)
+    /// Gets or sets the actual temperature in °C. (8 to 28 °C or ON / OFF)
     /// </summary>
     public double? TIst { get; set; }
 
     /// <summary>
-    /// Target temperature in ° C. (8 to 28 ° C or ON / OFF)
+    /// Gets or sets the target temperature in °C. (8 to 28 °C or ON / OFF)
     /// </summary>
     public double? TSoll { get; set; }
 
     /// <summary>
-    /// Lowering temperature in ° C. (8 to 28 ° C or ON / OFF)
+    /// Gets or sets the lowering temperature in °C. (8 to 28 °C or ON / OFF)
     /// </summary>
     public double? Absenk { get; set; }
 
     /// <summary>
-    /// Comfort temperature in ° C. (8 to 28 ° C or ON / OFF)
+    /// Gets or sets the comfort temperature in °C. (8 to 28 °C or ON / OFF)
     /// </summary>
     public double? Komfort { get; set; }
 
     /// <summary>
-    /// Keylock via UI / API on no / yes 
+    /// Gets or sets a value indicating whether the keylock is enabled via UI or API.
     /// </summary>
     public bool? Lock { get; set; }
 
     /// <summary>
-    /// Key lock directly on the device on no / yes 
+    /// Gets or sets a value indicating whether the keylock is enabled directly on the device.
     /// </summary>
     public bool? DeviceLock { get; set; }
 
     /// <summary>
-    /// Error codes supplied by the HKR (eg if there was a problem during the installation of the HKR):
-    /// 0: no error
-    /// 1: No adaptation possible. Device correctly mounted on the radiator?
-    /// 2: Valve lift too short or battery power too low. Open the valve lifter by hand several times and close orinsert new batteries.
-    /// 3: No valve movement possible. Valve tappets free?
-    /// 4: The installation is being prepared.
-    /// 5: The radiator controller is in installation mode and can be mounted on the heater valve.
-    /// 6: The radiator controller now adapts to the stroke of the heating valve.
+    /// Gets or sets the error code supplied by the HKR.
+    /// <para>0: No error</para>
+    /// <para>1: No adaptation possible. Device correctly mounted on the radiator?</para>
+    /// <para>2: Valve lift too short or battery power too low. Open the valve lifter by hand several times and close or insert new batteries.</para>
+    /// <para>3: No valve movement possible. Valve tappets free?</para>
+    /// <para>4: The installation is being prepared.</para>
+    /// <para>5: The radiator controller is in installation mode and can be mounted on the heater valve.</para>
+    /// <para>6: The radiator controller now adapts to the stroke of the heating valve.</para>
     /// </summary>
     public int? ErrorCode { get; set; }
 
     /// <summary>
-    /// Window oven detected
+    /// Gets or sets a value indicating whether a window open event is detected.
     /// </summary>
     public bool? WindowOpenActiv { get; set; }
 
     /// <summary>
-    /// Window open end time
+    /// Gets or sets the end time for the window open event.
     /// </summary>
     public DateTime? WindowOpenActivEndTime { get; set; }
 
     /// <summary>
-    ///  Boost active
+    /// Gets or sets a value indicating whether boost mode is active.
     /// </summary>
     public bool? BoostActive { get; set; }
 
     /// <summary>
-    /// Boost active end time.
+    /// Gets or sets the end time for the boost mode.
     /// </summary>
     public DateTime? BoostActiveEndTime { get; set; }
 
     /// <summary>
-    /// Battery low - please change the battery
+    /// Gets or sets a value indicating whether the battery is low.
     /// </summary>
     public bool? BatteryLow { get; set; }
 
     /// <summary>
-    /// Battery state of charge in percent. (0 - 100)
+    /// Gets or sets the battery state of charge in percent (0 - 100).
     /// </summary>
     public int? Battery{ get; set; }
 
     /// <summary>
-    /// Next temperature change
+    /// Gets or sets the next scheduled temperature change.
     /// </summary>
     public NextChange? NextChange { get; set; }
 
     /// <summary>
-    /// Is the HKR currently in a vacation period?
+    /// Gets or sets a value indicating whether the HKR is currently in a summer (vacation) period.
     /// </summary>
     public bool? SummerActive { get; set; }
 
     /// <summary>
-    /// Is the HKR currently in a Holiday period?
+    /// Gets or sets a value indicating whether the HKR is currently in a holiday period.
     /// </summary>
     public bool? HolidayActive { get; set; }
 
+    /// <summary>
+    /// Reads the HKR properties from the specified XML element.
+    /// </summary>
+    /// <param name="elm">The XML element to read from.</param>
     public void ReadX(XElement elm)
     {
         TIst = elm.ReadElementInt("tist");

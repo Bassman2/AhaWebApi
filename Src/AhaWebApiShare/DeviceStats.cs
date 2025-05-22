@@ -1,35 +1,39 @@
 ﻿namespace AhaWebApi;
 
 /// <summary>
-/// Device status
+/// Represents the status information for a device, including temperature, voltage, power, energy, and humidity statistics.
 /// </summary>
 public class DeviceStats : IXSerializable
 {
     /// <summary>
-    /// Temeratures
+    /// Gets or sets the list of temperature statistics for the device.
     /// </summary>
     public List<Stats>? Temperature { get; set; }
 
     /// <summary>
-    /// Voltages
+    /// Gets or sets the list of voltage statistics for the device.
     /// </summary>
     public List<Stats>? Voltage { get; set; }
 
     /// <summary>
-    /// Power
+    /// Gets or sets the list of power statistics for the device.
     /// </summary>
     public List<Stats>? Power { get; set; }
 
     /// <summary>
-    /// Energy
+    /// Gets or sets the list of energy statistics for the device.
     /// </summary>
     public List<Stats>? Energy { get; set; }
 
     /// <summary>
-    /// Humidity
+    /// Gets or sets the list of humidity statistics for the device.
     /// </summary>
     public List<Stats>? Humidity { get; set; }
 
+    /// <summary>
+    /// Reads the device statistics from the specified XML element.
+    /// </summary>
+    /// <param name="elm">The XML element to read from.</param>
     public void ReadX(XElement elm)
     {
         Temperature = elm.ReadElementList<Stats>("temperature", "stats");

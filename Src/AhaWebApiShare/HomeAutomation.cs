@@ -7,6 +7,12 @@ public sealed class HomeAutomation(string login, string password, Uri? host = nu
 {
     private HomeAutomationService? service = new(login, password, host);
 
+    /// <summary>
+    /// Releases all resources used by the <see cref="HomeAutomation"/> instance.
+    /// </summary>
+    /// <remarks>
+    /// This method disposes the underlying <see cref="HomeAutomationService"/> and suppresses finalization.
+    /// </remarks>
     public void Dispose()
     {
         if (this.service != null)
@@ -17,7 +23,14 @@ public sealed class HomeAutomation(string login, string password, Uri? host = nu
         GC.SuppressFinalize(this);
     }
 
+    /// <summary>
+    /// Special value for setting a device or actuator to "On" state (e.g., for switches or thermostats).
+    /// </summary>
     public const int On = 254;
+
+    /// <summary>
+    /// Special value for setting a device or actuator to "Off" state (e.g., for switches or thermostats).
+    /// </summary>
     public const int Off = 253;
 
     #region Public Methods
@@ -32,24 +45,30 @@ public sealed class HomeAutomation(string login, string password, Uri? host = nu
 
         return await service!.GetSwitchListAsync(cancellationToken);
     }
-    
+
     /// <summary>
-    /// Turns on the socket.
+    /// Turns on the specified power socket or actuator.
     /// </summary>
-    /// <param name="ain">Identification of the actor or template.</param>
-    /// <returns>The task object representing the asynchronous operation.</returns>
+    /// <param name="ain">Identification of the actor or template (AIN/MAC).</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    /// <returns>
+    /// A task that represents the asynchronous operation. The task result is <c>true</c> if the socket was successfully turned on, <c>false</c> if the operation failed, or <c>null</c> if the state is unknown.
+    /// </returns>
     public async Task<bool?> SetSwitchOnAsync(string ain, CancellationToken cancellationToken = default)
     {
         WebServiceException.ThrowIfNullOrNotConnected(this.service);
 
         return await service!.SetSwitchOnAsync(ain, cancellationToken);
     }
-    
+
     /// <summary>
-    /// Switches off the socket.
+    /// Turns off the specified power socket or actuator.
     /// </summary>
-    /// <param name="ain">Identification of the actor or template.</param>
-    /// <returns>The task object representing the asynchronous operation.</returns>
+    /// <param name="ain">Identification of the actor or template (AIN/MAC).</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    /// <returns>
+    /// A task that represents the asynchronous operation. The task result is <c>true</c> if the socket was successfully turned off, <c>false</c> if the operation failed, or <c>null</c> if the state is unknown.
+    /// </returns>
     public async Task<bool?> SetSwitchOffAsync(string ain, CancellationToken cancellationToken = default)
     {
         WebServiceException.ThrowIfNullOrNotConnected(this.service);
@@ -58,10 +77,13 @@ public sealed class HomeAutomation(string login, string password, Uri? host = nu
     }
 
     /// <summary>
-    /// Toggle the power socket on / off.
+    /// Toggles the state of the specified power socket or actuator.
     /// </summary>
-    /// <param name="ain">Identification of the actor or template.</param>
-    /// <returns>The task object representing the asynchronous operation.</returns>
+    /// <param name="ain">Identification of the actor or template (AIN/MAC).</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    /// <returns>
+    /// A task that represents the asynchronous operation. The task result is <c>true</c> if the socket was successfully toggled, <c>false</c> if the operation failed, or <c>null</c> if the state is unknown.
+    /// </returns>
     public async Task<bool?> SetSwitchToggleAsync(string ain, CancellationToken cancellationToken = default)
     {
         WebServiceException.ThrowIfNullOrNotConnected(this.service);
@@ -70,23 +92,31 @@ public sealed class HomeAutomation(string login, string password, Uri? host = nu
     }
 
     /// <summary>
-    /// Determines the switching state of the socket.
+    /// Determines the current switching state of the specified power socket or actuator.
     /// </summary>
-    /// <param name="ain">Identification of the actor or template.</param>
-    /// <returns>The task object representing the asynchronous operation.</returns>
-    /// <remarks>Changes if the connection is lost the condition only with some Minutes delay to false.</remarks>
+    /// <param name="ain">Identification of the actor or template (AIN/MAC).</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    /// <returns>
+    /// A task that represents the asynchronous operation. The task result is <c>true</c> if the socket is on, <c>false</c> if it is off, or <c>null</c> if the state is unknown.
+    /// </returns>
+    /// <remarks>
+    /// If the connection is lost, the state may only change to <c>false</c> after a delay of several minutes.
+    /// </remarks>
     public async Task<bool?> GetSwitchStateAsync(string ain, CancellationToken cancellationToken = default)
     {
         WebServiceException.ThrowIfNullOrNotConnected(this.service);
 
         return await service!.GetSwitchStateAsync(ain, cancellationToken);
     }
-    
+
     /// <summary>
-    /// Determines the connection status of the actuator.
+    /// Determines whether the specified power socket or actuator is currently connected (present).
     /// </summary>
-    /// <param name="ain">Identification of the actor or template.</param>
-    /// <returns>The task object representing the asynchronous operation.</returns>
+    /// <param name="ain">Identification of the actor or template (AIN/MAC).</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    /// <returns>
+    /// A task that represents the asynchronous operation. The task result is <c>true</c> if the device is present, <c>false</c> if not, or <c>null</c> if the state is unknown.
+    /// </returns>
     public async Task<bool?> GetSwitchPresentAsync(string ain, CancellationToken cancellationToken = default)
     {
         WebServiceException.ThrowIfNullOrNotConnected(this.service);
@@ -95,10 +125,13 @@ public sealed class HomeAutomation(string login, string password, Uri? host = nu
     }
 
     /// <summary>
-    /// Determines current power taken from the power outlet.
+    /// Determines the current power consumption (in watts) of the specified power socket or actuator.
     /// </summary>
-    /// <param name="ain">Identification of the actor or template.</param>
-    /// <returns>The task object representing the asynchronous operation.</returns>
+    /// <param name="ain">Identification of the actor or template (AIN/MAC).</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    /// <returns>
+    /// A task that represents the asynchronous operation. The task result is the current power in watts, or <c>null</c> if the value is unavailable.
+    /// </returns>
     public async Task<double?> GetSwitchPowerAsync(string ain, CancellationToken cancellationToken = default)
     {
         WebServiceException.ThrowIfNullOrNotConnected(this.service);
@@ -107,10 +140,13 @@ public sealed class HomeAutomation(string login, string password, Uri? host = nu
     }
 
     /// <summary>
-    /// Delivers the amount of energy taken from the socket since commissioning or resetting the energy statistics.
+    /// Retrieves the total energy consumption (in watt-hours) measured by the specified power socket or actuator since commissioning or the last reset of energy statistics.
     /// </summary>
-    /// <param name="ain">Identification of the actor or template.</param>
-    /// <returns>The task object representing the asynchronous operation.</returns>
+    /// <param name="ain">Identification of the actor or template (AIN/MAC).</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    /// <returns>
+    /// A task that represents the asynchronous operation. The task result is the total energy consumption in watt-hours, or <c>null</c> if the value is unavailable.
+    /// </returns>
     public async Task<double?> GetSwitchEnergyAsync(string ain, CancellationToken cancellationToken = default)
     {
         WebServiceException.ThrowIfNullOrNotConnected(this.service);
@@ -119,10 +155,13 @@ public sealed class HomeAutomation(string login, string password, Uri? host = nu
     }
 
     /// <summary>
-    /// Returns identifiers of the actor.
+    /// Retrieves the name of the specified power socket or actuator.
     /// </summary>
-    /// <param name="ain">Identification of the actor or template.</param>
-    /// <returns>The task object representing the asynchronous operation.</returns>
+    /// <param name="ain">Identification of the actor or template (AIN/MAC).</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    /// <returns>
+    /// A task that represents the asynchronous operation. The task result is the name of the device, or <c>null</c> if the name is unavailable.
+    /// </returns>
     public async Task<string?> GetSwitchNameAsync(string ain, CancellationToken cancellationToken = default)
     {
         WebServiceException.ThrowIfNullOrNotConnected(this.service);
@@ -154,10 +193,13 @@ public sealed class HomeAutomation(string login, string password, Uri? host = nu
     }
 
     /// <summary>
-    /// Last temperature information of the actuator.
+    /// Retrieves the latest measured temperature (in degrees Celsius) from the specified actuator or sensor.
     /// </summary>
-    /// <param name="ain">Identification of the actor or template.</param>
-    /// <returns>The task object representing the asynchronous operation.</returns>
+    /// <param name="ain">Identification of the actor or template (AIN/MAC).</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    /// <returns>
+    /// A task that represents the asynchronous operation. The task result is the current temperature in degrees Celsius, or <c>null</c> if the value is unavailable.
+    /// </returns>
     public async Task<double?> GetTemperatureAsync(string ain, CancellationToken cancellationToken = default)
     {
         WebServiceException.ThrowIfNullOrNotConnected(this.service);
@@ -166,10 +208,13 @@ public sealed class HomeAutomation(string login, string password, Uri? host = nu
     }
 
     /// <summary>
-    /// Setpoint temperature currently set for HKR.
+    /// Retrieves the setpoint temperature currently configured for the specified radiator regulator (HKR).
     /// </summary>
-    /// <param name="ain">Identification of the actor or template.</param>
-    /// <returns>The task object representing the asynchronous operation.</returns>
+    /// <param name="ain">Identification of the actuator or template (AIN/MAC).</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    /// <returns>
+    /// A task that represents the asynchronous operation. The task result is the setpoint temperature in degrees Celsius.
+    /// </returns>
     public async Task<double> GetHkrtSollAsync(string ain, CancellationToken cancellationToken = default)
     {
         WebServiceException.ThrowIfNullOrNotConnected(this.service);
@@ -178,10 +223,13 @@ public sealed class HomeAutomation(string login, string password, Uri? host = nu
     }
 
     /// <summary>
-    /// Comfort temperature set for HKR timer.
+    /// Retrieves the comfort temperature configured for the specified radiator regulator (HKR) timer.
     /// </summary>
-    /// <param name="ain">Identification of the actor or template.</param>
-    /// <returns>The task object representing the asynchronous operation.</returns>
+    /// <param name="ain">Identification of the actuator or template (AIN/MAC).</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    /// <returns>
+    /// A task that represents the asynchronous operation. The task result is the comfort temperature in degrees Celsius.
+    /// </returns>
     public async Task<double> GetHkrKomfortAsync(string ain, CancellationToken cancellationToken = default)
     {
         WebServiceException.ThrowIfNullOrNotConnected(this.service);
@@ -190,10 +238,13 @@ public sealed class HomeAutomation(string login, string password, Uri? host = nu
     }
 
     /// <summary>
-    /// Economy temperature set for HKR timer.
+    /// Retrieves the economy (lowering) temperature configured for the specified radiator regulator (HKR) timer.
     /// </summary>
-    /// <param name="ain">Identification of the actor or template.</param>
-    /// <returns>The task object representing the asynchronous operation.</returns>
+    /// <param name="ain">Identification of the actuator or template (AIN/MAC).</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    /// <returns>
+    /// A task that represents the asynchronous operation. The task result is the economy temperature in degrees Celsius.
+    /// </returns>
     public async Task<double> GetHkrAbsenkAsync(string ain, CancellationToken cancellationToken = default)
     {
         WebServiceException.ThrowIfNullOrNotConnected(this.service);
@@ -202,11 +253,19 @@ public sealed class HomeAutomation(string login, string password, Uri? host = nu
     }
 
     /// <summary>
-    /// HKR set temperature. The setpoint temperature is transferred with the "param" Get parameter.
+    /// Sets the setpoint temperature for the specified radiator regulator (HKR).
     /// </summary>
-    /// <param name="ain">Identification of the actor or template.</param>
-    /// <param name="temperature">Temperature value °C (8°C - 28°C), On or Off.</param>
-    /// <returns>The task object representing the asynchronous operation.</returns>
+    /// <param name="ain">Identification of the actuator or template (AIN/MAC).</param>
+    /// <param name="temperature">
+    /// Temperature value in degrees Celsius (8°C - 28°C), or use <see cref="On"/>/<see cref="Off"/> for special states.
+    /// </param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    /// <returns>
+    /// A task that represents the asynchronous operation. The task result is the setpoint temperature in degrees Celsius after the operation.
+    /// </returns>
+    /// <exception cref="ArgumentOutOfRangeException">
+    /// Thrown if <paramref name="temperature"/> is not within the valid range (8–28), and is not <see cref="On"/> or <see cref="Off"/>.
+    /// </exception>
     public async Task<double> SetHkrtSollAsync(string ain, double temperature, CancellationToken cancellationToken = default)
     {
         WebServiceException.ThrowIfNullOrNotConnected(this.service);
@@ -219,46 +278,58 @@ public sealed class HomeAutomation(string login, string password, Uri? host = nu
     }
 
     /// <summary>
-    /// Provides the basic statistics (temperature, voltage, power) of the actuator.
+    /// Retrieves the basic statistics (such as temperature, voltage, and power) for the specified actuator or device.
     /// </summary>
-    /// <param name="ain">Identification of the actor or template.</param>
-    /// <returns>The task object representing the asynchronous operation.</returns>
+    /// <param name="ain">Identification of the actor or template (AIN/MAC).</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    /// <returns>
+    /// A task that represents the asynchronous operation. The task result is a <see cref="DeviceStats"/> object containing the basic statistics, or <c>null</c> if the data is unavailable.
+    /// </returns>
     public async Task<DeviceStats?> GetBasicDeviceStatsAsync(string ain, CancellationToken cancellationToken = default)
     {
         WebServiceException.ThrowIfNullOrNotConnected(this.service);
 
         return await service!.GetBasicDeviceStatsAsync(ain, cancellationToken);
     }
-    
+
     /// <summary>
-    /// Provides the basic statistics (temperature, voltage, power) of the actuator as XML.
+    /// Retrieves the basic statistics (such as temperature, voltage, and power) for the specified actuator or device as an XML document.
     /// </summary>
-    /// <param name="ain">Identification of the actor or template.</param>
-    /// <returns>The task object representing the asynchronous operation.</returns>
+    /// <param name="ain">Identification of the actor or template (AIN/MAC).</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    /// <returns>
+    /// A task that represents the asynchronous operation. The task result is an <see cref="XmlDocument"/> containing the basic statistics, or <c>null</c> if the data is unavailable.
+    /// </returns>
     public async Task<XmlDocument?> GetBasicDeviceStatsXmlAsync(string ain, CancellationToken cancellationToken = default)
     {
         WebServiceException.ThrowIfNullOrNotConnected(this.service);
 
         return await service!.GetBasicDeviceStatsXmlAsync(ain, cancellationToken);
     }
-    
+
     /// <summary>
-    /// Provides the basics information of all routines/triggers.
+    /// Retrieves the basic information of all routines and triggers available in the Smart Home system.
     /// </summary>
-    /// <returns>The task object representing the asynchronous operation.</returns>
-    /// <remarks>Needs FRITZ!OS 7.39 or higher.</remarks>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    /// <returns>
+    /// A task that represents the asynchronous operation. The task result is a <see cref="TriggerList"/> containing the routines and triggers information, or <c>null</c> if the data is unavailable.
+    /// </returns>
+    /// <remarks>Requires FRITZ!OS 7.39 or higher.</remarks>
     public async Task<TriggerList?> GetTriggerListInfosAsync(CancellationToken cancellationToken = default)
     {
         WebServiceException.ThrowIfNullOrNotConnected(this.service);
 
         return await service!.GetTriggerListInfosAsync(cancellationToken);
     }
-    
+
     /// <summary>
-    /// Provides the basics information of all routines/triggers as XML.
+    /// Retrieves the basic information of all routines and triggers available in the Smart Home system as an XML document.
     /// </summary>
-    /// <returns>The task object representing the asynchronous operation.</returns>
-    /// <remarks>Needs FRITZ!OS 7.39 or higher.</remarks>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    /// <returns>
+    /// A task that represents the asynchronous operation. The task result is an <see cref="XmlDocument"/> containing the routines and triggers information, or <c>null</c> if the data is unavailable.
+    /// </returns>
+    /// <remarks>Requires FRITZ!OS 7.39 or higher.</remarks>
     public async Task<XmlDocument?> GetTriggerListInfosXmlAsync(CancellationToken cancellationToken = default)
     {
         WebServiceException.ThrowIfNullOrNotConnected(this.service);
@@ -267,12 +338,15 @@ public sealed class HomeAutomation(string login, string password, Uri? host = nu
     }
 
     /// <summary>
-    /// Activate or deactivate trigger.
+    /// Activates or deactivates the specified trigger in the Smart Home system.
     /// </summary>
-    /// <param name="ain">Identification of the actor or template.</param>
-    /// <param name="active">True to activate, false to deactivate.</param>
-    /// <returns>The task object representing the asynchronous operation.</returns>
-    /// <remarks>Needs FRITZ!OS 7.39 or higher.</remarks>
+    /// <param name="ain">Identification of the actor or template (AIN/MAC).</param>
+    /// <param name="active">Set to <c>true</c> to activate the trigger, or <c>false</c> to deactivate it.</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    /// <returns>
+    /// A task that represents the asynchronous operation. The task result is <c>true</c> if the trigger was successfully updated, <c>false</c> if the operation failed, or <c>null</c> if the state is unknown.
+    /// </returns>
+    /// <remarks>Requires FRITZ!OS 7.39 or higher.</remarks>
     public async Task<bool?> SetTriggerActiveAsync(string ain, bool active, CancellationToken cancellationToken = default)
     {
         WebServiceException.ThrowIfNullOrNotConnected(this.service);
