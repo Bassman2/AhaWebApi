@@ -38,6 +38,7 @@ public sealed class HomeAutomation(string login, string password, Uri? host = nu
     /// <summary>
     /// Returns the AIN / MAC list of all known sockets.
     /// </summary>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <returns>The task object representing the asynchronous operation.</returns>
     public async Task<string[]?> GetSwitchListAsync(CancellationToken cancellationToken = default)
     {
@@ -172,6 +173,7 @@ public sealed class HomeAutomation(string login, string password, Uri? host = nu
     /// <summary>
     /// Provides the basic information of all SmartHome devices.
     /// </summary>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <returns>The task object representing the asynchronous operation.</returns>
     public async Task<DeviceList?> GetDeviceListInfosAsync(CancellationToken cancellationToken = default)
     {
@@ -184,6 +186,7 @@ public sealed class HomeAutomation(string login, string password, Uri? host = nu
     /// <summary>
     /// Provides the basic information of all SmartHome devices as XML.
     /// </summary>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <returns>The task object representing the asynchronous operation.</returns>
     public async Task<XmlDocument?> GetDeviceListInfosXmlAsync(CancellationToken cancellationToken = default)
     {
@@ -357,6 +360,7 @@ public sealed class HomeAutomation(string login, string password, Uri? host = nu
     /// <summary>
     /// Returns the basic information of all templates / templates.
     /// </summary>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <returns>The task object representing the asynchronous operation.</returns>
     public async Task<TemplateList?> GetTemplateListInfosAsync(CancellationToken cancellationToken = default)
     {
@@ -368,6 +372,7 @@ public sealed class HomeAutomation(string login, string password, Uri? host = nu
     /// <summary>
     /// Returns the basic information of all templates / templates as XML.
     /// </summary>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <returns>The task object representing the asynchronous operation.</returns>
     public async Task<XmlDocument?> GetTemplateListInfosXmlAsync(CancellationToken cancellationToken = default)
     {
@@ -415,12 +420,17 @@ public sealed class HomeAutomation(string login, string password, Uri? host = nu
     }
 
     /// <summary>
-    /// Set dimming, height, brightness or level.
+    /// Sets the dimming, height, brightness, or level of a device or actuator.
     /// </summary>
-    /// <param name="ain">Identification of the actor or template.</param>
-    /// <param name="level">Level (0 - 255) to set.</param>
-    /// <returns>The task object representing the asynchronous operation.</returns>
-    /// <exception cref="ArgumentOutOfRangeException"></exception>
+    /// <param name="ain">Identification of the actor or template (AIN/MAC).</param>
+    /// <param name="level">The level to set (0–255).</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    /// <returns>
+    /// A task that represents the asynchronous operation. The task result is an integer indicating the result of the operation, or <c>null</c> if the operation failed.
+    /// </returns>
+    /// <exception cref="ArgumentOutOfRangeException">
+    /// Thrown if <paramref name="level"/> is not in the range 0–255.
+    /// </exception>
     public async Task<int?> SetLevelAsync(string ain, int level, CancellationToken cancellationToken = default)
     {
         WebServiceException.ThrowIfNullOrNotConnected(this.service);
@@ -431,12 +441,17 @@ public sealed class HomeAutomation(string login, string password, Uri? host = nu
     }
 
     /// <summary>
-    /// Set dimming, height, brightness or level level in percent.
+    /// Sets the dimming, height, brightness, or level of a device or actuator as a percentage.
     /// </summary>
-    /// <param name="ain">Identification of the actor or template.</param>
-    /// <param name="level">Level in percent (0 - 100) to set.</param>
-    /// <returns>The task object representing the asynchronous operation.</returns>
-    /// <exception cref="ArgumentOutOfRangeException"></exception>
+    /// <param name="ain">Identification of the actor or template (AIN/MAC).</param>
+    /// <param name="level">The level to set, in percent (0–100).</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    /// <returns>
+    /// A task that represents the asynchronous operation. The task result is an integer indicating the result of the operation, or <c>null</c> if the operation failed.
+    /// </returns>
+    /// <exception cref="ArgumentOutOfRangeException">
+    /// Thrown if <paramref name="level"/> is not in the range 0–100.
+    /// </exception>
     public async Task<int?> SetLevelPercentageAsync(string ain, int level, CancellationToken cancellationToken = default)
     {
         WebServiceException.ThrowIfNullOrNotConnected(this.service);
@@ -474,15 +489,21 @@ public sealed class HomeAutomation(string login, string password, Uri? host = nu
     }
 
     /// <summary>
-    /// Adjust hue saturation color. 
-    /// Of the brightness (value) can be over setlevel/setlevelpercentage be configured, the hue and saturation values are here configurable.
+    /// Adjusts the hue and saturation color of a lamp or actuator using the HSV color space, without mapping to device-specific color tables.
+    /// The brightness (value) can be configured separately using <see cref="SetLevelAsync"/> or <see cref="SetLevelPercentageAsync"/>.
+    /// This method allows you to set the unmapped hue and saturation values directly.
     /// </summary>
-    /// <param name="ain">Identification of the actor or template.</param>
-    /// <param name="hue">Hue value of the color.</param>
-    /// <param name="saturation">Saturation value of the color.</param>
-    /// <param name="duration">Speed of the change.</param>
-    /// <returns>The task object representing the asynchronous operation.</returns>
-    /// <exception cref="ArgumentOutOfRangeException"></exception>
+    /// <param name="ain">Identification of the actor or template (AIN/MAC).</param>
+    /// <param name="hue">Unmapped hue value of the color (0–359).</param>
+    /// <param name="saturation">Unmapped saturation value of the color (0–255).</param>
+    /// <param name="duration">Optional. The speed of the color change as a <see cref="TimeSpan"/>. If <c>null</c>, the default speed is used.</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    /// <returns>
+    /// A task that represents the asynchronous operation. The task result is an integer indicating the result of the operation, or <c>null</c> if the operation failed.
+    /// </returns>
+    /// <exception cref="ArgumentOutOfRangeException">
+    /// Thrown if <paramref name="hue"/> is not in the range 0–359, or <paramref name="saturation"/> is not in the range 0–255.
+    /// </exception>
     public async Task<int?> SetUnmappedColorAsync(string ain, int hue, int saturation, TimeSpan? duration = null, CancellationToken cancellationToken = default)
     {
         WebServiceException.ThrowIfNullOrNotConnected(this.service);
@@ -495,13 +516,18 @@ public sealed class HomeAutomation(string login, string password, Uri? host = nu
     }
 
     /// <summary>
-    /// Adjust color temperature.
+    /// Sets the color temperature of a lamp or actuator.
     /// </summary>
-    /// <param name="ain">Identification of the actor or template.</param>
-    /// <param name="temperature">Color temperature in °Kelvin (2700° bis 6500°)</param>
-    /// <param name="duration">Speed of the change.</param>
-    /// <returns>The task object representing the asynchronous operation.</returns>
-    /// <exception cref="ArgumentOutOfRangeException"></exception>
+    /// <param name="ain">Identification of the actor or template (AIN/MAC).</param>
+    /// <param name="temperature">Color temperature in degrees Kelvin (2700–6500).</param>
+    /// <param name="duration">Optional. The speed of the color change as a <see cref="TimeSpan"/>. If <c>null</c>, the default speed is used.</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    /// <returns>
+    /// A task that represents the asynchronous operation. The task result is an integer indicating the result of the operation, or <c>null</c> if the operation failed.
+    /// </returns>
+    /// <exception cref="ArgumentOutOfRangeException">
+    /// Thrown if <paramref name="temperature"/> is not in the range 2700–6500.
+    /// </exception>
     public async Task<int?> SetColorTemperatureAsync(string ain, int temperature, TimeSpan? duration = null, CancellationToken cancellationToken = default)
     {
         WebServiceException.ThrowIfNullOrNotConnected(this.service);
@@ -550,6 +576,7 @@ public sealed class HomeAutomation(string login, string password, Uri? host = nu
     /// <param name="temperature">Color temperature of the light.</param>
     /// <param name="ains">List of lamp devices.</param>
     /// <param name="colorpreset">>User color preset or not.</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <returns>The task object representing the asynchronous operation.</returns>
     /// <exception cref="ArgumentOutOfRangeException">On of the argument are out of range.</exception>
     public async Task<int?> AddColorLevelTemplateAsync(string name, int levelPercentage, int temperature, IEnumerable<string> ains, bool colorpreset = false, CancellationToken cancellationToken = default)
@@ -566,6 +593,7 @@ public sealed class HomeAutomation(string login, string password, Uri? host = nu
     /// <summary>
     /// Provides a proposal for the color selection values.
     /// </summary>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <returns>The task object representing the asynchronous operation.</returns>
     public async Task<ColorDefaults?> GetColorDefaultsAsync(CancellationToken cancellationToken = default)
     {
@@ -577,6 +605,7 @@ public sealed class HomeAutomation(string login, string password, Uri? host = nu
     /// <summary>
     /// Provides a proposal for the color selection values as XML.
     /// </summary>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <returns>The task object representing the asynchronous operation.</returns>
     public async Task<XmlDocument?> GetColorDefaultsXmlAsync(CancellationToken cancellationToken = default)
     {
@@ -591,6 +620,7 @@ public sealed class HomeAutomation(string login, string password, Uri? host = nu
     /// </summary>
     /// <param name="ain">Identification of the actor or template.</param>
     /// <param name="endtimestamp">End time to set.</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <returns>The task object representing the asynchronous operation.</returns>
     /// <exception cref="ArgumentOutOfRangeException"></exception>
     public async Task<DateTime?> SetHkrBoostAsync(string ain, DateTime? endtimestamp = null, CancellationToken cancellationToken = default)
@@ -603,13 +633,14 @@ public sealed class HomeAutomation(string login, string password, Uri? host = nu
         }
         return await service!.SetHkrBoostAsync(ain, endtimestamp, cancellationToken);
     }
-    
+
     /// <summary>
     /// HKR window open mode activate with end time for the disable: endtimestamp = null.
     /// The end time may not exceed to 24 hours in the future lie.
     /// </summary>
     /// <param name="ain">Identification of the actor or template.</param>
     /// <param name="endtimestamp">End time to set.</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <returns>The task object representing the asynchronous operation.</returns>
     /// <exception cref="ArgumentOutOfRangeException"></exception>
     public async Task<DateTime?> SetHkrWindowOpenAsync(string ain, DateTime? endtimestamp = null, CancellationToken cancellationToken = default)
@@ -629,6 +660,7 @@ public sealed class HomeAutomation(string login, string password, Uri? host = nu
     /// </summary>
     /// <param name="ain">Identification of the actor or template.</param>
     /// <param name="target">Target to set.</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <returns>The task object representing the asynchronous operation.</returns>
     public async Task<Target?> SetBlindAsync(string ain, Target target, CancellationToken cancellationToken = default)
     {
@@ -636,13 +668,14 @@ public sealed class HomeAutomation(string login, string password, Uri? host = nu
 
         return await service!.SetBlindAsync(ain, target, cancellationToken);
     }
-    
+
     /// <summary>
     /// Change device or group name.
     /// Attention: the user session must have the smart home and app right.
     /// </summary>
     /// <param name="ain">Identification of the actor or template.</param>
     /// <param name="name">New name, maximum 40 characters.</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <returns>The task object representing the asynchronous operation.</returns>
     /// <exception cref="ArgumentOutOfRangeException"></exception>
     /// <remarks>Requires the "Restricted FRITZ!Box settings for apps" permission.</remarks>
@@ -654,12 +687,13 @@ public sealed class HomeAutomation(string login, string password, Uri? host = nu
         var res = await service!.SetNameAsync(ain, name, cancellationToken);
         return res;
     }
-    
+
     /// <summary>
     /// json metadata of the template or change/set empty string
     /// </summary>
     /// <param name="ain">Identification of the actor or template.</param>
     /// <param name="metaData">Metadata to set.</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <returns>The task object representing the asynchronous operation.</returns>
     /// <remarks>New in Fritz!OS 7.39</remarks>
     public async Task SetMetaDataAsync(string ain, MetaData metaData, CancellationToken cancellationToken = default)
@@ -672,6 +706,7 @@ public sealed class HomeAutomation(string login, string password, Uri? host = nu
     /// <summary>
     /// Start DECT ULE device registration.
     /// </summary>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <returns>The task object representing the asynchronous operation.</returns>
     /// <remarks>Requires the "Restricted FRITZ!Box settings for apps" permission.</remarks>
     public async Task StartUleSubscriptionAsync(CancellationToken cancellationToken = default)
@@ -684,6 +719,7 @@ public sealed class HomeAutomation(string login, string password, Uri? host = nu
     /// <summary>
     /// Query DECT-ULE device registration status.
     /// </summary>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <returns>The task object representing the asynchronous operation.</returns>
     /// <remarks>Requires the "Restricted FRITZ!Box settings for apps" permission.</remarks>
     public async Task<SubscriptionState?> GetSubscriptionStateAsync(CancellationToken cancellationToken = default)
@@ -696,6 +732,7 @@ public sealed class HomeAutomation(string login, string password, Uri? host = nu
     /// <summary>
     /// Query DECT-ULE device registration status as XML.
     /// </summary>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <returns>The task object representing the asynchronous operation.</returns>
     /// <remarks>Requires the "Restricted FRITZ!Box settings for apps" permission.</remarks>
     public async Task<XmlDocument?> GetSubscriptionStateXmlAsync(CancellationToken cancellationToken = default)
@@ -706,10 +743,13 @@ public sealed class HomeAutomation(string login, string password, Uri? host = nu
     }
 
     /// <summary>
-    /// Provides the basic information of one SmartHome devices.
+    /// Provides the basic information of a single SmartHome device.
     /// </summary>
-    /// <param name="ain">Identification of the actor or template.</param>
-    /// <returns>The task object representing the asynchronous operation.</returns>
+    /// <param name="ain">Identification of the actor or template (AIN/MAC).</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    /// <returns>
+    /// A task that represents the asynchronous operation. The task result is a <see cref="Device"/> object containing the device information, or <c>null</c> if the data is unavailable.
+    /// </returns>
     public async Task<Device?> GetDeviceInfosAsync(string ain, CancellationToken cancellationToken = default)
     {
         WebServiceException.ThrowIfNullOrNotConnected(this.service);
@@ -718,10 +758,13 @@ public sealed class HomeAutomation(string login, string password, Uri? host = nu
     }
 
     /// <summary>
-    /// Provides the basic information of one SmartHome devices.
+    /// Provides the basic information of a single SmartHome device as an XML document.
     /// </summary>
-    /// <param name="ain">Identification of the actor or template.</param>
-    /// <returns>The task object representing the asynchronous operation.</returns>
+    /// <param name="ain">Identification of the actor or template (AIN/MAC).</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    /// <returns>
+    /// A task that represents the asynchronous operation. The task result is an <see cref="XmlDocument"/> containing the device information, or <c>null</c> if the data is unavailable.
+    /// </returns>
     public async Task<XmlDocument?> GetDeviceInfosXmlAsync(string ain, CancellationToken cancellationToken = default)
     {
         WebServiceException.ThrowIfNullOrNotConnected(this.service);
