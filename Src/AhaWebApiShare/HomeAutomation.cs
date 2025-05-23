@@ -377,10 +377,13 @@ public sealed class HomeAutomation(string login, string password, Uri? host = nu
     }
 
     /// <summary>
-    /// Apply template, the ain parameter is evaluated.
+    /// Applies the specified template to the associated device or group.
     /// </summary>
-    /// <param name="ain">Identification of the actor or template.</param>
-    /// <returns>The task object representing the asynchronous operation.</returns>
+    /// <param name="ain">Identification of the actor or template (AIN/MAC).</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    /// <returns>
+    /// A task that represents the asynchronous operation. The task result is an integer indicating the result of the operation, or <c>null</c> if the operation failed.
+    /// </returns>
     public async Task<int?> ApplyTemplateAsync(string ain, CancellationToken cancellationToken = default)
     {
         WebServiceException.ThrowIfNullOrNotConnected(this.service);
@@ -389,11 +392,21 @@ public sealed class HomeAutomation(string login, string password, Uri? host = nu
     }
 
     /// <summary>
-    /// Device/actuator/lamp switch on/off or toggle. 
+    /// Switches a device, actuator, or lamp on, off, or toggles its state.
     /// </summary>
-    /// <param name="ain">Identification of the actor or template.</param>
-    /// <param name="onOff">Switch on, off or toggle.</param>
-    /// <returns>The task object representing the asynchronous operation.</returns>
+    /// <param name="ain">Identification of the actor or template (AIN/MAC).</param>
+    /// <param name="onOff">
+    /// The desired state to set:
+    /// <list type="bullet">
+    /// <item><description><see cref="OnOff.On"/> to switch on</description></item>
+    /// <item><description><see cref="OnOff.Off"/> to switch off</description></item>
+    /// <item><description><see cref="OnOff.Toggle"/> to toggle the current state</description></item>
+    /// </list>
+    /// </param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    /// <returns>
+    /// A task that represents the asynchronous operation. The task result is the new state (<see cref="OnOff"/>) after the operation, or <c>null</c> if the state is unknown.
+    /// </returns>
     public async Task<OnOff?> SetSimpleOnOffAsync(string ain, OnOff onOff, CancellationToken cancellationToken = default)
     {
         WebServiceException.ThrowIfNullOrNotConnected(this.service);
@@ -434,15 +447,21 @@ public sealed class HomeAutomation(string login, string password, Uri? host = nu
     }
 
     /// <summary>
-    /// Adjust hue saturation color. The HSV color space is used with the hue saturation mode supports.
-    /// Of the brightness (value) can be over setlevel/setlevelpercentage be configured, the hue and saturation values are here configurable.
+    /// Adjusts the hue and saturation color of a lamp or actuator using the HSV color space.
+    /// The brightness (value) can be configured separately using <see cref="SetLevelAsync"/> or <see cref="SetLevelPercentageAsync"/>.
+    /// This method allows you to set the hue and saturation values directly.
     /// </summary>
-    /// <param name="ain">Identification of the actor or template.</param>
-    /// <param name="hue">Hue value of the color.</param>
-    /// <param name="saturation">Saturation value of the color.</param>
-    /// <param name="duration">Speed of the change.</param>
-    /// <returns>The task object representing the asynchronous operation.</returns>
-    /// <exception cref="ArgumentOutOfRangeException"></exception>
+    /// <param name="ain">Identification of the actor or template (AIN/MAC).</param>
+    /// <param name="hue">Hue value of the color (0–359).</param>
+    /// <param name="saturation">Saturation value of the color (0–255).</param>
+    /// <param name="duration">Optional. The speed of the color change as a <see cref="TimeSpan"/>. If <c>null</c>, the default speed is used.</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    /// <returns>
+    /// A task that represents the asynchronous operation. The task result is an integer indicating the result of the operation, or <c>null</c> if the operation failed.
+    /// </returns>
+    /// <exception cref="ArgumentOutOfRangeException">
+    /// Thrown if <paramref name="hue"/> is not in the range 0–359, or <paramref name="saturation"/> is not in the range 0–255.
+    /// </exception>
     public async Task<int?> SetColorAsync(string ain, int hue, int saturation, TimeSpan? duration = null, CancellationToken cancellationToken = default)
     {
         WebServiceException.ThrowIfNullOrNotConnected(this.service);
@@ -493,16 +512,23 @@ public sealed class HomeAutomation(string login, string password, Uri? host = nu
     }
 
     /// <summary>
-    /// Creates a color template for lamps.
+    /// Creates a color template for lamps with specified brightness and color settings.
     /// </summary>
-    /// <param name="name">Name of the template to create.</param>
-    /// <param name="levelPercentage">Level Percentage of the light.</param>
-    /// <param name="hue">Hue value.</param>
-    /// <param name="saturation">Saturation value.</param>
-    /// <param name="ains">List of lamp devices.</param>
-    /// <param name="colorpreset">User color preset or not.</param>
-    /// <returns>The task object representing the asynchronous operation.</returns>
-    /// <exception cref="ArgumentOutOfRangeException">On of the argument are out of range.</exception>
+    /// <param name="name">The name of the template to create.</param>
+    /// <param name="levelPercentage">The brightness level percentage of the light (0–1000).</param>
+    /// <param name="hue">The hue value of the color (0–359).</param>
+    /// <param name="saturation">The saturation value of the color (0–255).</param>
+    /// <param name="ains">A collection of lamp device identifiers (AIN/MAC) to which the template will be applied.</param>
+    /// <param name="colorpreset">Set to <c>true</c> to mark as a user color preset; otherwise, <c>false</c>.</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    /// <returns>
+    /// A task that represents the asynchronous operation. The task result is an integer indicating the result of the operation, or <c>null</c> if the operation failed.
+    /// </returns>
+    /// <exception cref="ArgumentOutOfRangeException">
+    /// Thrown if <paramref name="levelPercentage"/> is not in the range 0–1000,
+    /// <paramref name="hue"/> is not in the range 0–359,
+    /// or <paramref name="saturation"/> is not in the range 0–255.
+    /// </exception>
     public async Task<int?> AddColorLevelTemplateAsync(string name, int levelPercentage, int hue, int saturation, IEnumerable<string> ains, bool colorpreset = false, CancellationToken cancellationToken = default)
     {
         WebServiceException.ThrowIfNullOrNotConnected(this.service);
